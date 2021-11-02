@@ -38,6 +38,11 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    private $checkPassword;
 
     /**
      * @ORM\Column(type="boolean")
@@ -67,7 +72,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="boolean")
      */
-    private $rgpd;
+    private $rgpd = false;
 
     public function __construct()
     {
@@ -140,6 +145,21 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): self
     {
         $this->password = $password;
+
+        return $this;
+    }
+
+     /**
+     * @see PasswordAuthenticatedUserInterface
+     */
+    public function getCheckPassword(): string
+    {
+        return $this->checkPassword;
+    }
+
+    public function setCheckPassword(string $checkPassword): self
+    {
+        $this->checkPassword = $checkPassword;
 
         return $this;
     }

@@ -49,12 +49,21 @@ class Product
      */
     private $orderLines;
 
+      /**
+     * @ORM\OneToMany(targetEntity=Categorie::class, mappedBy="product", orphanRemoval=true)
+     */
+    private $categories;
+
+
+   
+
+
     public function __construct()
     {
         $this->orderLines = new ArrayCollection();
+        
+        
     }
-
-   
 
     public function getId(): ?int
     {
@@ -169,6 +178,36 @@ class Product
         return $this;
     }
 
-
     
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategorie(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategorie(Categorie $categorie): self
+    {
+        if (!$this->categories->contains($categorie)) {
+            $this->categories[] = $categorie;
+            $categorie->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategorie(Categorie $categorie): self
+    {
+        if ($this->categories->removeElement($categorie)) {
+            // set the owning side to null (unless already changed)
+            if ($categorie->getProduct() === $this) {
+                $categorie->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

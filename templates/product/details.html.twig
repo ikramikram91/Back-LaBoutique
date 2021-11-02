@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les produits
+{% endblock %}
+
+{% block body %}
+    <section class="bg-light p-3">
+        <h1>Les produits</h1>
+    </section>
+
+
+     <div class="tabs">
+     {# affiche le message une fois le commentaire envoyer  #}
+{% for message in app.flashes('message') %}
+<div class= " p-3 mb-2 bg-success text-white" >{{message}} </div>
+{% endfor %}
+    <section class="row">
+            <div class="col-4 mt-4">
+                <div class="border border-dark rounded p-2 clearfix">
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.price }} €</p>
+                    <img class="w-100" src="{{ asset('uploads/') ~ product.picture }}" alt="Image de {{ product.name }}">
+                    <p>{{ product.content }}</p>
+                    <hr>
+                    <a href="{{path("shop_add", {id: product.id})}}" class="btn btn-success">
+                        <i class="bi bi-cart-plus"></i> Ajouter
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        
+    </section>
+<br>
+<div class ='block' id='ajout-commentaire'>
+    <p > <strong>Ajouter un commentaire</strong> </p>
+{{ form_start(form) }}
+  <p> votre e_mail </p>
+  {{form_widget(form.email)}}
+   <p> nom </p>
+   {{form_widget(form.name)}}
+    <p> votre commentaire </p>
+    {{form_widget(form.content)}}
+    <p> gestion des donnée {{form_widget(form.rgpd)}}</p>
+<p> en cochante cette case vous <br>
+     accéptez que vos donner soit concervé</p>
+{{ form_end(form) }}
+</div>
+
+<br>
+    <p > <strong>Liste des commentaires</strong> </p>
+
+    {# la boucle affiche les commentaire #}
+    </div class="block">
+    {% for comment in product.comments %}
+
+    {% if comment.parent == null %}
+    {{loop.index}}
+    <spane class = "border"> {{ comment.name }} </spane>
+    <p> {{ comment.content }} </p>
+    <p> <a  class='btn btn-primary'href="#" data-reply data-id="{{comment.id}}">répondre</a></p>
+    {# <p> publier le{{ comment.createdat|date("d/m/y")}}</p> #}
+    {# <p>{{ comment.reatedAt|date("d/m/y H:1") }}</p> #}
+    
+   {#  affichage des réponse  #}
+    {% for reply in comment.replies %}
+    <div>
+    {{ reply.name }}
+    {{ reply.content}}
+    </div>
+    {% endfor %}
+    
+    
+    {% endif %}
+
+    {% endfor %}
+    </div>
+
+    {% block script %}
+    <script>
+    window.onload = () =>{
+        // je met un écuteur d'évenement sur le button reply
+        document.querySelectorAll("[data-reply]").forEach(element => {
+            element.addEventListener("click", function(){
+                //this contienderra tout élément sur leque j'aurrais clické 
+                //permet d'injecter directement sur l'input caché l'id  
+                //console.log(this);
+                // je cherche l'élécont qui a l'id coments_parentid
+                document.querySelector("#commentaire_parent").value = this.dataset.id // signifie le data id de la balise qur la quelle j'aurais clické 
+            })
+        })
+    }
+    
+    </script>
+    
+    
+    {% endblock %}
+{% endblock %}

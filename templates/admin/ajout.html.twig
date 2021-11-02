@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un Poduit{% endblock %}
+
+{% block body %}
+{{ form(form)}}
+<a href="{{ path('admin_ajout_categorie') }}"> ajouter une categorie </a>
+
+{% endblock %}
