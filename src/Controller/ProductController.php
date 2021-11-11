@@ -12,15 +12,27 @@ use DateTimeImmutable;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ProductController extends AbstractController
 {
-    #[Route('/product', name: 'product_index')]
-    public function index(ProductRepository $productRepository, Request $request, MailerInterface $mailer)
+   
+    
+    #[Route('/product', name: 'product')]
+    public function product(ProductRepository $productRepository, Request $request, MailerInterface $mailer)
+    {
+    
+        return $this->render('product/index.html.twig', [
+            'product' => $productRepository->findAll(),
+            
+            
+        ]);
+      
+    }
+    #[Route('/product/form', name: 'product_index')] 
+    public function index( Request $request, MailerInterface $mailer)
     {
         // formulaire d'envoie d'email de contact
         $formContact = $this->createForm( FormContactType::class);
@@ -28,16 +40,16 @@ class ProductController extends AbstractController
         $contact = $formContact->handleRequest($request);
         if($formContact->isSubmitted() && $formContact->isValid()){
             $email = (new TemplatedEmail()) 
-                 ->from($contact->get('email')->getData())//récup email de la personne qui envoie le message 
-                 ->to(new Address('amelia.djellouli@outlook.fr'))
-                 ->htmlTemplate('email/contact.html.twig')
-                 ->context([
-                     'firstname' => $contact->get('firstname')->getData(),//récup les information du formulaire 
-                     'name' => $contact->get('name')->getData(),
-                     'mail' => $contact->get('email')->getData(),
-                     'subject' => $contact->get('subject')->getData(),
-                     'message' => $contact->get('message')->getData()
-                 ]);
+                ->from($contact->get('email')->getData())//récup email de la personne qui envoie le message 
+                ->to(new Address('amelia.djellouli@outlook.fr'))
+                ->htmlTemplate('email/contact.html.twig')
+                ->context([
+                    'firstname' => $contact->get('firstname')->getData(),//récup les information du formulaire 
+                    'name' => $contact->get('name')->getData(),
+                    'mail' => $contact->get('email')->getData(),
+                    'subject' => $contact->get('subject')->getData(),
+                    'message' => $contact->get('message')->getData()
+                ]);
 
             //envoie le mail
             $mailer->send($email);
@@ -51,8 +63,7 @@ class ProductController extends AbstractController
 
 
 
-        return $this->render('product/index.html.twig', [
-            'product' => $productRepository->findAll(),
+        return $this->render("contact/index.html.twig", [
             'contact' => $contact->createView(),
         ]);
       

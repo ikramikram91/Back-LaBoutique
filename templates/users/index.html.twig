@@ -1,26 +1,22 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}votre page de profile {% endblock %}
+{% extends 'user.html.twig' %}
 
 {% block body %}
-{# affiche les info de l'utilisateur connecter accée au profile  #}
-<div class="tabs">
-{% for message in app.flashes('message') %}
-<div class= " p-3 mb-2 bg-success text-white" >{{message}} </div>
+
+{% for order in app.user.ordereds %}
+<div class="row align-items-center">
+    
+    <div class="col">
+        <p>Numerode commandes:{{ order.id}}</p>
+    </div>
+    <div class="col">
+        Total:{{ order.price }}
+    </div>
+</div> 
+
+
+
+    
 {% endfor %}
-
-{% for afficher in app.flashes('afficher') %}
-<div class= " p-3 mb-2 bg-success text-white" >{{afficher}} </div>
-{% endfor %}
-<p > nom: {{ app.user.lastname }}</p>
-
-<p> prenom: {{ app.user.name }}</p>
-
-<p > email:  {{ app.user.email}}</p>
-
-<a class="btn btn-primary" href="{{ path('users_profile_edit') }}">modifier profile </a>
-<br><br>
-<a class="btn btn-primary" href="{{ path('users_password_edit') }}">modifier mot de passe </a>
-</div>
 
 {% endblock %}
+

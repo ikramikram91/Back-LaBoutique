@@ -1,0 +1,26 @@
+.card{
+    width: 290px; 
+    
+}
+.card-img-top {
+    width: 288px;
+    height: 300px;
+   
+}
+
+h6{
+    color: rgb(255, 255, 255);
+}
+.fa-shopping-cart{
+color:rgb(255, 255, 255); ;
+}
+.carousel-control-prev{
+    color:black;
+     background-color:transparent;
+      border: none;
+}
+.carousel-control-next{
+    color:black;
+     background-color:transparent;
+      border: none;
+}

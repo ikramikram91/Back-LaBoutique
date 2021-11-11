@@ -1,38 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les produits
-{% endblock %}
+
 
 {% block body %}
-    <section class="bg-light p-3">
-        <h1>Les produits</h1>
-        <div>
-        <h2>Contact</h2>
-        {{ form(contact) }}
+    
+       
+       
 
   {# boucle qui affiche les message peut être mis dans le base.twig #}
-        {% for messages in app.flashes('messages') %}
+        {# {% for messages in app.flashes('messages') %}
 <div class = 'p-3 mb-2 bg-success text-white'> {{ messages }} </div>
-        {% endfor %}
+        {% endfor %} #}
     
-        </div>
-    </section>
+        
+    
 
     <section class="row">
         {% for produit in product %}
-            <div class="col-4 mt-4">
-                <div class="border border-dark rounded p-2 clearfix">
-                    <h2>{{ produit.name }}</h2>
-                    <p>{{ produit.price }} €</p>
-                   <a href="{{path('product_detail', {id: produit.id})}}"> <img class="w-100" src="{{ asset('uploads/') ~ produit.picture }}" alt="Image de {{ produit.name }}"></a>
+    <div class="col-4 mt-4">
                     
-                    <hr>
-                    <a href="{{path("shop_add", {id: produit.id})}}" class="btn btn-success">
-                        <i class="bi bi-cart-plus"></i> Ajouter
-                    </a>
-                </div>
-            </div>
+		<div class="card w-10 h-20"  >
+				<div id="carousel" class="carousel slide carousel-fade h-5" style='height: 300px;'data-bs-ride="carousel" data-bs-interval="0" >
+					
+                    <div class="carousel-inner">
+						<div class="carousel-item active">
+							<a href="{{path('product_detail', {id: produit.id})}}"> 
+                                <img class="w-100" src="{{ asset('uploads/') ~ produit.picture }}" alt="Image de ">
+                            </a>
+						</div>
+						<div class="carousel-item">
+							<a href="{{path('product_detail', {id: produit.id})}}"> 
+                                <img class="w-100" src="{{ asset('uploads/') ~ produit.picture }}" alt="Image de ">
+                            </a>
+						</div>
+						<div class="carousel-item">
+							<a href="{{path('product_detail', {id: produit.id})}}"> 
+                                <img class="w-100" src="{{ asset('uploads/') ~ produit.picture }}" alt="Image de ">
+                            </a>
+						</div>
+					</div>
+					<button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Previous</span>
+					</button>
+					<button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+						<span class="carousel-control-next-icon" aria-hidden="true"></span>
+						<span class="visually-hidden">Next</span>
+					</button>
+				</div>
+				<div class=" d-flex justify-content-between " style="background-color: #343a40;">
+						<h6 class="card-title " style="font-family: 'Roboto Slab', serif;"> <strong>{{ produit.name }}</strong> </h6>
+						<p class="card-text" style="color:rgb(56, 122, 160);">{{ produit.price }} €</p>
+						<a href="{{path("shop_add", {id: produit.id})}}"  class="btn btn-outline-light "><i class="fas fa-shopping-cart"></i></a>
+				</div>
+			
+        </div>
+    </div>
         {% endfor %}
     </section>
+
+
+
+
+
 {% endblock %}
 
