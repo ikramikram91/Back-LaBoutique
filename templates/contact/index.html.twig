@@ -1,5 +1,10 @@
 {% extends 'base.html.twig'%}
 
 {% block body %}
-{{form(contact)}}
+<h1 style="color:black"> Cantacter le vendeur</h1>
+<div class="container">
+{{form_start(contact)}}
+{{form_widget(contact)}}
+{{form_end(contact)}}
+</div>
 {% endblock %}

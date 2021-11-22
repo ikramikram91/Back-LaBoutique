@@ -25,7 +25,31 @@ class ProductController extends AbstractController
     {
     
         return $this->render('product/index.html.twig', [
-            'product' => $productRepository->findAll(),
+            'product' => $productRepository->findByCategorie('bracelet'),
+            
+            
+        ]);
+      
+    }
+
+    #[Route('/product/cheville', name: 'product_cheville')]
+    public function productCheville(ProductRepository $productRepository, Request $request, MailerInterface $mailer)
+    {
+    
+        return $this->render('product/cheville.html.twig', [
+            'product' => $productRepository->findByCategorie('cheville'),
+            
+            
+        ]);
+      
+    }
+
+    #[Route('/product/hanche', name: 'product_hanche')]
+    public function productHanche(ProductRepository $productRepository, Request $request, MailerInterface $mailer)
+    {
+    
+        return $this->render('product/hanche.html.twig', [
+            'product' => $productRepository->findByCategorie('hanche'),
             
             
         ]);

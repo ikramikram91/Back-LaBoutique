@@ -49,10 +49,12 @@ class Product
      */
     private $orderLines;
 
-      /**
-     * @ORM\OneToMany(targetEntity=Categorie::class, mappedBy="product", orphanRemoval=true)
+     
+
+    /**
+     * @ORM\Column(type="string", length=255)
      */
-    private $categories;
+    private $categorie;
 
 
    
@@ -178,33 +180,14 @@ class Product
         return $this;
     }
 
-    
-    /**
-     * @return Collection|Categorie[]
-     */
-    public function getCategorie(): Collection
+
+    public function getCategorie(): ?string
     {
-        return $this->categories;
+        return $this->categorie;
     }
-
-    public function addCategorie(Categorie $categorie): self
+    public function setCategorie(string $categorie): self
     {
-        if (!$this->categories->contains($categorie)) {
-            $this->categories[] = $categorie;
-            $categorie->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCategorie(Categorie $categorie): self
-    {
-        if ($this->categories->removeElement($categorie)) {
-            // set the owning side to null (unless already changed)
-            if ($categorie->getProduct() === $this) {
-                $categorie->setProduct(null);
-            }
-        }
+        $this->categorie = $categorie;
 
         return $this;
     }

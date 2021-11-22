@@ -38,11 +38,7 @@ class Users implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $checkPassword;
+   
 
     /**
      * @ORM\Column(type="boolean")

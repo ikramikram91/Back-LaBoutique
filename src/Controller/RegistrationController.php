@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\user;
+namespace App\Controller;
 
 use App\Entity\Users;
 use App\Form\RegistrationFormType;
@@ -29,7 +29,7 @@ class RegistrationController extends AbstractController
         $user = new Users();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
             $user->setPassword(
@@ -38,6 +38,7 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+        
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
@@ -53,7 +54,7 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('product');
         }
 
         return $this->render('registration/register.html.twig', [
@@ -78,6 +79,6 @@ class RegistrationController extends AbstractController
         // @TODO Change the redirect on success and handle or remove the flash message in your templates
         $this->addFlash('success', 'votre adresse mail a étè vérifier.');
 
-        return $this->redirectToRoute('app_home');
+        return $this->redirectToRoute('product');
     }
 }

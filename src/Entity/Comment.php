@@ -41,12 +41,12 @@ class Comment
     private $created_at;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="replies")
+     * @ORM\ManyToOne(targetEntity=Comment::class, inversedBy="replies" )
      */
     private $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="parent")
+     * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="parent", cascade={"persist", "remove"})
      */
     private $replies;
 
