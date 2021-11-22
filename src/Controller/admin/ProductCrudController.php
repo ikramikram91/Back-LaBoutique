@@ -29,6 +29,23 @@ class ProductCrudController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // on récup les image transmise 
+            $images = $form->get('images')->getData();
+
+            // on boucle sur les images
+            foreach($images as $image){
+                // génére un nouveau nom de fichier 
+            $fichier = md5(uniqid()). '.' . $image->guessExtension();
+
+            // on copie le fichier dans le dossier image
+            $image->move(
+                $this->getParameter('images_directory'),
+                $fichier
+            ); 
+             $product->setPicture($fichier);
+        }
+            // on stoke le nom de l'image dans la base de donner dans l'entity product column picture 
+          
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();
@@ -57,6 +74,23 @@ class ProductCrudController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // on récup les image transmise 
+            $images = $form->get('images')->getData();
+
+            // on boucle sur les images
+            foreach($images as $image){
+                // génére un nouveau nom de fichier 
+            $fichier = md5(uniqid()). '.' . $image->guessExtension();
+
+            // on copie le fichier dans le dossier image
+            $image->move(
+                $this->getParameter('images_directory'),
+                $fichier
+            ); 
+            $product->setPicture($fichier);
+            }
+
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('product_crud_index', [], Response::HTTP_SEE_OTHER);
