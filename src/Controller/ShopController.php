@@ -44,7 +44,7 @@ class ShopController extends AbstractController
     /**
      * @Route("/add/{id}", name="add")
      */
-    public function add(Product $product, SessionInterface $session)
+    public function add($stripeSK, Product $product, SessionInterface $session)
     {
         // On récupère le panier actuel
         $panier = $session->get("panier", []);
