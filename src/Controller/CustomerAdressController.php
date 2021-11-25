@@ -23,7 +23,7 @@ class CustomerAdressController extends AbstractController
             $em->persist($adress);
             $em->flush();
 
-
+            return $this->redirectToRoute('checkout');
         }
 
         return $this->render('customer_adress/index.html.twig', [

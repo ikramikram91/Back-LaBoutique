@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin.html.twig' %}
 {% block body %}
-    <h1 style="color:black">Liste des produits</h1>
-    
+    <h1 style="color:black; display:flex; text-align:center">Liste des produits</h1>
+    <a class="btn btn-primary"href="{{ path('product_crud_new') }}">Create new</a> 
  <div class="container">
     <table class="table">
         <thead>
@@ -23,7 +23,7 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.picture }}</td>
                 <td>
-                    <a class = "btn btn-dark" href="{{ path('product_crud_show', {'id': product.id}) }}">voir le details</a>
+                    <a class = "btn btn-dark" href="{{ path('product_crud_show', {'id': product.id}) }}">details</a>
                     
                     <a class = "btn btn-dark" href="{{ path('product_crud_edit', {'id': product.id}) }}">modifier</a>
                     {{ include('product_crud/_delete_form.html.twig')}}
@@ -38,7 +38,7 @@
         </tbody>
     </table>
 
-    <a class="btn btn-primary"href="{{ path('product_crud_new') }}">Create new</a>
+   
 
     </div>
 {% endblock %}

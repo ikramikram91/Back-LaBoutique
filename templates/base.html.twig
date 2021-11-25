@@ -30,12 +30,14 @@ integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ
 {% block title %}{% endblock %}
 
 </head>
+<!-- Full screen modal -->
+
 
 <!-- nav bar -->
 
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark " >
 
-		 <img src="/logo.png""  id="logo"  alt="logo">
+		<a href="{{path('product')}}"> <img src="/logo.png"  id="logo"  alt="logo"></a>
 			<h1 >la boutique de la perle</h1>
 
 
@@ -48,23 +50,53 @@ integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 		
 		<div style="margin-left: 60%">
-			<a class="btn btn-info" href = "{{ path('app_login')}}" ><i class="fas fa-user" ></i></a>
+			<button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+ 				<i class="fas fa-user" ></i>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width:200px; height:350px; margin-left:50%">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        
+        <button type="button"  data-bs-dismiss="modal" aria-label="Close"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body " >
+        <a class="btn btn-info" href = "{{path('app_login')}}"> Se connecter </a>
+		<br><br>
+		<a class="btn btn-info" style="text-align:center"href = "{{path('app_logout')}}"> Se déconnecter</a>
+		<br><br>
+		<a class="btn btn-info" href = "{{path('users')}}"> mon profile </a>
+      </div>
+      
+    </div>
+  </div>
+</div>
+  				
+	
             <a class="btn btn-info" href = "{{ path('product_index')}}"><i class="far fa-address-card"></i></a>
             <a class="btn btn-info" href= "{{ path('shop_index')}}"><i class="fas fa-shopping-cart"></i></a>
         </div>
 	
 		</nav>
-    
+    <!-- Button trigger modal -->
 
+
+{% for message in app.flashes('message') %}
+<div class= " p-3 mb-2 bg-secondary text-white" > <h1 style="text-align:center; color: white" >{{message}} </h1></div>
+{% endfor %}
 {% block body %}{% endblock %}
 
 
+         
+
 
 <!-- footer -->
-	<div class="footer-dark">
+	<div class="footer-dark " >
 	<footer>
 		
-	<div class="container">
+	<div class="container ">
 		<div class="row">
 			<div class="col-sm-6 col-md-3 item">
 				<h3>Services</h3>
@@ -77,17 +109,17 @@ integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ
 			<div class="col-sm-6 col-md-3 item">
 				<h3>About</h3>
 				<ul>
-					<li><a href="{{path('rgpd')}}">rgpd</a></li>
-					<li><a href="#">Team</a></li>
+					<li><a href="{{path('rgpd')}}">Réglement sur la protection des données</a></li>
+					<li><a href="{{path('cgv')}}">Condition générale de vente et d'utilisation</a></li>
 					<li><a href="#">Careers</a></li>
 				</ul>
 			</div>
 			<div class="col-md-6 item text">
 				<h3>la boutique de la perle</h3>
-				<p>la boutique de la perle est une boutique en ligne vous retrouverez des création original et personalisable collier braceler collier de hanche ou braceler de chevies.
-					suivez nous sur instagram et soyer a jours sur nos créat   </p>
+				<p>la boutique de la perle est une boutique en ligne vous retrouverez des créations originales et personnalisables collier bracelet collier de hanche ou bracelet de chevir.
+Suivez-nous sur instagram et soyer à jour sur nos créations  </p>
 			</div>
-			<div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+			<div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
 		</div>
 		<p class="copyright">la boutique de la perle © 2021</p>
 	</div>

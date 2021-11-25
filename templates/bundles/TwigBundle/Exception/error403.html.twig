@@ -1,0 +1,15 @@
+{% extends 'base.html.twig'%}
+{% block body %}
+<h1 style="color:black; display:block; text-align:center; margin-left:auto; margin-right:auto"> Accée Refusée</h1>
+<div class="container-fluid" style="text-align:center">
+    <p>
+   Désolée vous ne pouvez pas accéder a cette page, 
+   mais retouvez tout nos produit ici
+    </p>
+    <h4><i class="fas fa-hand-point-down"></i></h4>
+    <h6>
+    <a href="{{path('product')}}"> Retourner à la page de nos produit</a>
+    </h6>
+    <i class="far fa-smile-wink"></i>
+</div>
+{% endblock %}

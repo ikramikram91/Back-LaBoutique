@@ -80,8 +80,8 @@ class ProductController extends AbstractController
 
 
             //confirm et redirige
-            $this->addFlash('messages', 'message envoyer');
-            return $this->redirectToRoute('product_index');
+            $this->addFlash('message', 'message envoyer');
+            return $this->redirectToRoute('product');
         }
 
 

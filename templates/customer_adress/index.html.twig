@@ -1,8 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CustomerAdressController!{% endblock %}
+
 
 {% block body %}
-
-    {{form(form)}}
+    <h1 style="color:black; display:flex; justify-content:center">veuiller communiquer votre adress postale </h1>
+<div class="container">
+    {{form_start(form)}}
+    {{form_row(form.lastname)}}
+    {{form_row(form.name)}}
+    {{form_row(form.email)}}
+    {{form_row(form.adress)}}
+    {{form_row(form.cp)}}
+    {{form_row(form.town)}}
+    {{form_row(form.country)}}
+    {{form_row(form.rgpd)}}
+<button class="btn btn-primary" type="submit" class="btn">Confirmer</button>
+    {{form_end(form)}}
+    </div>
+    
 {% endblock %}

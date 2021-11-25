@@ -1,4 +1,9 @@
-.card{
+@media screen and (min-width: 800px) {
+    .container {
+      margin: 1em 2em;
+    }
+  }
+  .card{
     width: 290px; 
     
 }
@@ -24,3 +29,6 @@ color:rgb(255, 255, 255); ;
      background-color:transparent;
       border: none;
 }
+
+ 
+  
