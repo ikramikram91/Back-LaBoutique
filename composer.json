@@ -58,8 +58,10 @@
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^5.3",
         "symfony/stopwatch": "5.3.*",
-        "symfony/web-profiler-bundle": "5.3.*"
+        "symfony/web-profiler-bundle": "5.3.*",
+        "heroku/heroku-buildpack-php": "*"
     },
+    
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
