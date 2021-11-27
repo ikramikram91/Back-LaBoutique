@@ -65,7 +65,7 @@ class ProductController extends AbstractController
         if($formContact->isSubmitted() && $formContact->isValid()){
             $email = (new TemplatedEmail()) 
                 ->from($contact->get('email')->getData())//récup email de la personne qui envoie le message 
-                ->to(new Address('amelia.djellouli@outlook.fr'))
+                ->to(new Address('ikramdjellouli@laboutiquedelaperle.fr'))
                 ->htmlTemplate('email/contact.html.twig')
                 ->context([
                     'firstname' => $contact->get('firstname')->getData(),//récup les information du formulaire 
