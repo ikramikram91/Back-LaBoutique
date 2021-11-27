@@ -1,4 +1,55 @@
 {% extends 'base.html.twig'%}
 {% block body %}
-hello main!
+<h1 style="font-family: 'Dancing Script'; font-size: 30px; color: black; text-align:center, margin-left:auto;margin-right:autot"> Bienvenue sur la boutique de la perle</h1>
+<h2 style="font-family: 'Dancing Script'; font-size: 30px; color: black; text-align:center"> retrouver tous nos produits en cliquant sur la catégorie de produits qui vous intéresse </h2>
+
+<div id= "carousel-center" class="container ">
+
+		<div id="carouselExampleCaptions" class="carousel slide " data-bs-ride="carousel">
+			<div class="carousel-indicators">
+			  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+			  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+			  <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+			</div>
+			<div class="carousel-inner ">
+			  <div class="carousel-item ">
+					
+				<a href="{{path('product')}}"><img class="carousel" style="width:900px; display:block; margin-left:auto; margin-right:auto;text-align:center" src="/assets/img/bracelet.jpg" class="img-responsive" alt="..."></a>
+					
+				<div class="carousel-caption d-none d-md-block">
+				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: black;"> <strong>Bracelet</strong> </h1>
+				  <p style="color:black"> <strong>Cliquez sur l'image pour accéder aux produits </strong> </p>
+				</div>
+			  </div>
+			  <div class="carousel-item active">
+				  
+				<a href="{{path('product_cheville')}}"><img class = "carousel" style="width:500px; display:block; margin-left:auto; margin-right:auto;text-align:center" src="/assets/img/cheville.jpg" class="img-responsive"  alt="..."></a>
+				
+				<div class="carousel-caption d-none d-md-block">
+				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: grey;">Bracelet de cheville</h1>
+				  <p>Cliquez sur l'image pour accéder aux produits</p>
+				</div>
+			  </div>
+			  <div class="carousel-item">
+				
+				<a href="{{path('product_hanche')}}"><img class="carousel"  style="width:350px; display:block; margin-left:auto; margin-right:auto;text-align:center"src="/assets/img/hanche.jpg" class="img-responsive"  alt="..."></a>
+				
+				<div class="carousel-caption d-none d-md-block">
+				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: black;">Chaîne de hanche</h1>
+				  <p>Cliquez sur l'image pour accéder aux produits</p>
+				</div>
+			  </div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+			  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			  <span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+			  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			  <span class="visually-hidden">Next</span>
+			</button>
+		  </div>
+		</div>
+        
+    
 {% endblock %}

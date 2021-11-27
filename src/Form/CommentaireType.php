@@ -37,10 +37,10 @@ class CommentaireType extends AbstractType
                 'constraints' => [
                     new NotBlank() // permet la protection cotés serveur pour ne pas bidouiller le code en inspecteur obliger a cocher la case même si on touche au code on retirant le require
                 ],
-                'label' => 'en cohant cette case vous accépter que vos donnéer soit concervé'
+                'label' => 'En cochant cette case vous acceptez que vos données soient conservées'
             ] )
             ->add('submit', SubmitType::class,[
-                'label' => 'envoyer'
+                'label' => 'Envoyer'
             ])
             
         ;

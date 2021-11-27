@@ -15,10 +15,14 @@ class EditProfileType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('name', TextType::class)
-            ->add('lastname', TextType::class)
+            ->add('name', TextType::class,[
+                'label'=>"prenom"
+            ])
+            ->add('lastname', TextType::class,[
+                'label'=> "nom"
+            ])
             -> add('submite', SubmitType::class, [
-                'label' => 'valider'
+                'label' => 'Validez'
             ])
         ;
     }

@@ -19,29 +19,29 @@
 			<div class="carousel-inner ">
 			  <div class="carousel-item ">
 					
-				<a href="{{path('product')}}"><img class="carousel" style="width:900px; display:block; margin-left:auto; margin-right:auto;text-align:center" src="/bracelet.jpg" class="img-responsive" alt="..."></a>
+				<a href="{{path('product')}}"><img class="carousel" style="width:900px; display:block; margin-left:auto; margin-right:auto;text-align:center" src="/assets/img/bracelet.jpg" class="img-responsive" alt="image d'un bracelet"></a>
 					
 				<div class="carousel-caption d-none d-md-block">
-				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: black;"> <strong>Braclet</strong></h1>
-				   <p style="color:black"> <strong>clicker sur l'image pour accéder aux produits </strong> </p>
+				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: black;"> <strong>Bracelet</strong></h1>
+				   <p style="color:black"> <strong>Cliquez sur l'image pour accéder aux produits </strong> </p>
 				</div>
 			  </div>
 			  <div class="carousel-item ">
 				  
-				<a href="{{path('product_cheville')}}"><img class = "carousel" style="width:500px; display:block; margin-left:auto; margin-right:auto;text-align:center" src="/cheville.jpg" class="img-responsive"  alt="..."></a>
+				<a href="{{path('product_cheville')}}"><img class = "carousel" style="width:500px; display:block; margin-left:auto; margin-right:auto;text-align:center" src="/assets/img/cheville.jpg" class="img-responsive"  alt="image d'un bracelet de cheville"></a>
 				
 				<div class="carousel-caption d-none d-md-block">
 				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: grey;">Bracelet de cheville</h1>
-				  <p>clicker sur l'image pour accéder aux produits</p>
+				  <p>Cliquez sur l'image pour accéder aux produits</p>
 				</div>
 			  </div>
 			  <div class="carousel-item active">
 				
-				<a href="{{path('product_hanche')}}"><img class="carousel"  style="width:350px; display:block; margin-left:auto; margin-right:auto;text-align:center"src="/hanche.jpg" class="img-responsive"  alt="..."></a>
+				<a href="{{path('product_hanche')}}"><img class="carousel"  style="width:350px; display:block; margin-left:auto; margin-right:auto;text-align:center"src="/assets/img/hanche.jpg" class="img-responsive"  alt="image d'une chaîne de hanche"></a>
 				
 				<div class="carousel-caption d-none d-md-block">
 				  <h1 style="font-family: 'Dancing Script'; font-size: 30px; color: black;">Chaîne de hanche</h1>
-				  <p>clicker sur l'image pour accéder aux produits</p>
+				  <p>Cliquez sur l'image pour accéder aux produits</p>
 				</div>
 			  </div>
 			</div>
@@ -64,7 +64,7 @@
 		<div class=" card w-10 h-20"  >
 			
 							<a href="{{path('product_detail', {id: produit.id})}}"> 
-                                <img  style ="height:350px;" class="w-100 img-responsive" src="{{ asset('image/') ~ produit.picture }}" alt="Image de ">
+                                <img  style ="height:350px;" class="w-100 img-responsive" src="{{ asset('image/') ~ produit.picture }}" alt="Image de chaîne de hanche ">
                             </a>
 						
 				<div class=" d-flex justify-content-between " style="background-color: #343a40; responsive: true">
